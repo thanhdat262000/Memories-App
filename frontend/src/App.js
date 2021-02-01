@@ -21,7 +21,7 @@ function App() {
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
         <Typography className={classes.heading} variant="h2" align="center">
-          Memories{" "}
+          Memories
         </Typography>
         <img
           className={classes.image}
@@ -33,6 +33,7 @@ function App() {
       <Grow in>
         <Container>
           <Grid
+            className={classes.mainContainer}
             container
             justify="space-between"
             alignItems="stretch"
