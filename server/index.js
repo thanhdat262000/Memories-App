@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
-
+import userRoutes from "./routes/user";
 dotenv.config();
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -15,7 +15,7 @@ app.use("/posts", postRoutes);
 app.get("/", (req, res) => {
   res.send("Welcome to my website!");
 });
-
+app.use("/user", userRoutes);
 const PORT = process.env.PORT || 5000;
 mongoose
   .connect(process.env.CONNECTION_URL, {
