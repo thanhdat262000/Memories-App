@@ -35,6 +35,7 @@ function Auth(props) {
 
     if (isSignup) {
       dispatch(signup(form, history));
+      console.log(form);
     } else {
       dispatch(signin(form, history));
     }

@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User from "../models/user";
+import User from "../models/user.js";
 export const signin = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -23,7 +23,7 @@ export const signin = async (req, res) => {
     res.status(500).json({ message: "Some thing wrong!" });
   }
 };
-export const signin = async (req, res) => {
+export const signup = async (req, res) => {
   const { email, password, confirmPassword, firstName, lastName } = req.body;
   try {
     const existingUser = await User.findOne({ email });
@@ -31,7 +31,7 @@ export const signin = async (req, res) => {
     if (password !== confirmPassword)
       return res.status(404).json({ message: "User exist!" });
     const hashPassword = await bcrypt.hash(password, 12);
-    const result = User.create({
+    const result = await User.create({
       email,
       password: hashPassword,
       name: `${firstName} ${lastName}`,
