@@ -1,4 +1,4 @@
-![alt](https://drive.google.com/file/d/1AJBbKArJFq0AXDJazR_7TM8F06rVnhjw/view?usp=sharing)
+![alt](https://firebasestorage.googleapis.com/v0/b/easyaccommod-897d8.appspot.com/o/Screenshot%202021-02-18%20214736.png?alt=media)
 # Memories App
 ## A website written with MEARN stack to upload your memorable memories of your life!
 ### On this website you can:
