@@ -1,43 +1,37 @@
-import * as api from "../api";
-import { CREATE, DELETE, FETCH_ALL, UPDATE } from "../constants/actionTypes";
-export const getPosts = () => async (dispatch) => {
-  try {
-    const { data } = await api.fetchPost();
-    dispatch({ type: FETCH_ALL, payload: data });
-  } catch (error) {
-    console.log(error);
-  }
+import {
+  CREATE,
+  CREATE_SUCCESS,
+  DELETE,
+  DELETE_SUCCESS,
+  FETCH_ALL_SUCCESS,
+  LIKE,
+  UPDATE,
+  UPDATE_SUCCESS,
+} from "../constants/actionTypes";
+export const getPosts = (data) => {
+  return { type: FETCH_ALL_SUCCESS, payload: data };
 };
-export const createPost = (post) => async (dispatch) => {
-  try {
-    const { data } = await api.createPost(post);
-    dispatch({ type: CREATE, payload: data });
-  } catch (error) {
-    console.log(error);
-  }
+export const createPost = (post) => {
+  return { type: CREATE, payload: post };
 };
-export const updatePost = (id, post) => async (dispatch) => {
-  try {
-    const { data } = await api.updatePost(id, post);
-    dispatch({ type: UPDATE, payload: data });
-  } catch (error) {
-    console.log(error);
-  }
+export const createPostSuccess = (data) => {
+  return { type: CREATE_SUCCESS, payload: data };
 };
-
-export const deletePost = (id) => async (dispatch) => {
-  try {
-    await api.deletePost(id);
-    dispatch({ type: DELETE, payload: id });
-  } catch (error) {
-    console.log(error);
-  }
+export const updatePost = (id, post) => {
+  return { type: UPDATE, payload: { id, post } };
 };
-export const likePost = (id) => async (dispatch) => {
-  try {
-    const { data } = await api.likePost(id);
-    dispatch({ type: UPDATE, payload: data });
-  } catch (error) {
-    console.log(error);
-  }
+export const updatePostSuccess = (data) => {
+  return { type: UPDATE_SUCCESS, payload: data };
+};
+export const deletePost = (id) => {
+  return { type: DELETE, payload: id };
+};
+export const deletePostSuccess = (id) => {
+  return { type: DELETE_SUCCESS, payload: id };
+};
+export const likePost = (id) => {
+  return { type: LIKE, payload: id };
+};
+export const likePostSuccess = (data) => {
+  return { type: UPDATE_SUCCESS, payload: data };
 };

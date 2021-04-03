@@ -3,12 +3,12 @@ import { Container, Grow, Grid } from "@material-ui/core";
 import Posts from "../posts/posts";
 import Form from "../form/form";
 import { useDispatch } from "react-redux";
-import { getPosts } from "../../actions/post";
+import { FETCH_ALL } from "../../constants/actionTypes";
 function Home(props) {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch({ type: FETCH_ALL });
     return () => {};
   }, [currentId, dispatch]);
   return (
