@@ -1,14 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Router } from "react-router";
+import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import { Container } from "@material-ui/core";
 import Navbar from "./components/navbar/navBar";
 import Home from "./components/home/home";
 import Auth from "./components/auth/auth";
-
+import history from "./constants/history";
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <Container maxWidth="lg">
         <Navbar />
         <Switch>

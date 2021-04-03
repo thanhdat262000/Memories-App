@@ -5,9 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
+import createSagaMiddleware from "redux-saga";
 import thunk from "redux-thunk";
 import reducers from "./reducers";
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
+import rootSaga from "./saga";
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  reducers,
+  compose(applyMiddleware(sagaMiddleware, thunk))
+);
+sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <Provider store={store}>
     <App />

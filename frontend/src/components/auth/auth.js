@@ -6,7 +6,7 @@ import {
   Typography,
   Button,
 } from "@material-ui/core";
-import { AUTH } from "../../constants/actionTypes";
+import { AUTH_SUCCESS } from "../../constants/actionTypes";
 import { GoogleLogin } from "react-google-login";
 import Input from "./input";
 import Icon from "./icon";
@@ -15,7 +15,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
-import { signin, signup } from "../../actions/auth";
+import { signIn, signUp } from "../../actions/auth";
 
 const initialState = {
   firstName: "",
@@ -34,10 +34,10 @@ function Auth(props) {
     e.preventDefault();
 
     if (isSignup) {
-      dispatch(signup(form, history));
+      dispatch(signUp(form));
       console.log(form);
     } else {
-      dispatch(signin(form, history));
+      dispatch(signIn(form));
     }
   };
   const handleChange = (e) => {
@@ -52,7 +52,7 @@ function Auth(props) {
     const result = res?.profileObj;
     const token = res?.tokenId;
     try {
-      dispatch({ type: AUTH, data: { result, token } });
+      dispatch({ type: AUTH_SUCCESS, payload: { result, token } });
       history.push("/");
     } catch (error) {
       console.log(error);
